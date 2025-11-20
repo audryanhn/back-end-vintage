@@ -1,8 +1,11 @@
+import bodyParser from "body-parser";
 import express from "express";
 import router from "./routes/api";
 
 const app = express();
 const PORT = 3000;
+
+app.use(bodyParser.json());
 
 app.use("/api", router);
 

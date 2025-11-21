@@ -1,7 +1,10 @@
-export type TRegister = {
+export interface IUser {
   fullName: string;
   username: string;
-  password: string;
-  confirmPassword: string;
   email: string;
-};
+  password: string;
+  role: string;
+  profilePicture: string;
+  isActive: boolean;
+  activationCode: string;
+}

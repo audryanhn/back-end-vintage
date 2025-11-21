@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import * as Yup from "yup";
-import { TRegister } from "../utils/interfaces";
+import userModel from "../models/user.model";
 import response from "../utils/response";
+import { TRegister } from "../utils/types";
 
 const registerValidateSchema = Yup.object({
   fullName: Yup.string().required(),
@@ -26,11 +27,15 @@ export default {
         email,
         confirmPassword,
       });
-      response.success(res, "Validate Success", {
+
+      const result = await userModel.create({
         fullName,
         username,
+        email,
         password,
       });
+
+      response.success(res, "Validate Success", result);
     } catch (error) {
       const err = error as unknown as Error;
       response.badRequest(res, err.message);

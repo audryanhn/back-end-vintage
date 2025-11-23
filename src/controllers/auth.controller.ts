@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import * as Yup from "yup";
 import userModel from "../models/user.model";
 import { encrypt } from "../utils/encrypt";
+import type { IReqUser } from "../utils/interfaces";
+import { generateToken } from "../utils/jwt";
 import response from "../utils/response";
 import { TLogin, TRegister } from "../utils/types";
 
@@ -70,10 +72,40 @@ export default {
         response.forbidden(res, "Wrong Password, Check again!");
       }
 
-      response.success(res, "Login Success", userByIdentifier);
+      // GENERATE TOKEN DULU
+
+      const accessToken = generateToken({
+        id: userByIdentifier._id,
+        role: userByIdentifier.role,
+      });
+
+      response.success(res, "Login Success", accessToken);
     } catch (error) {
       const err = error as unknown as Error;
       response.badRequest(res, `From Login : ${err.message}`);
+    }
+  },
+
+  async me(req: IReqUser, res: Response) {
+    const user = req.user;
+
+    if (!user) {
+      response.badRequest(res, "Data Not Found!");
+      return;
+    }
+
+    try {
+      const result = await userModel.findById(user.id);
+
+      if (!result) {
+        response.badRequest(res, "User not found");
+        return;
+      }
+
+      response.success(res, "Get Info Success", result);
+    } catch (error) {
+      const err = error as unknown as Error;
+      response.badRequest(res, `Something went wrong`, err.message);
     }
   },
 };

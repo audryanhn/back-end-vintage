@@ -1,3 +1,6 @@
+import { Request } from "express";
+import { Types } from "mongoose";
+
 export interface IUser {
   fullName: string;
   username: string;
@@ -8,3 +11,25 @@ export interface IUser {
   isActive: boolean;
   activationCode: string;
 }
+
+// ------------------------- FOR JWT TOKEN START -------------------------
+
+export interface IUserToken
+  extends Omit<
+    IUser,
+    | "fullName"
+    | "username"
+    | "email"
+    | "password"
+    | "profilePicture"
+    | "isActive"
+    | "activationCode"
+  > {
+  id: Types.ObjectId;
+}
+
+export interface IReqUser extends Request {
+  user?: IUserToken; // ini isinya cuman id sama roles
+}
+
+// ------------------------- FOR JWT TOKEN END -------------------------

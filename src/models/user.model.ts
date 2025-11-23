@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encrypt } from "../utils/encrypt";
 import { IUser } from "../utils/interfaces";
 
 const Schema = mongoose.Schema;
@@ -40,6 +41,12 @@ const userSchema = new Schema<IUser>(
   },
   { timestamps: true }
 );
+
+userSchema.pre("save", function (next) {
+  const user = this; // untuk memanipulasi data yang akan masuk ke database jadinya pake this
+  user.password = encrypt(user.password);
+  next();
+});
 
 const userModel = mongoose.model("User", userSchema);
 

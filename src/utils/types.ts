@@ -1,3 +1,4 @@
+// ------------------- AUTH CONTROLLER START -------------------------
 export type TRegister = {
   fullName: string;
   username: string;
@@ -5,3 +6,10 @@ export type TRegister = {
   confirmPassword: string;
   email: string;
 };
+
+export type TLogin = {
+  identifier: string;
+  password: string;
+};
+
+// ------------------- AUTH CONTROLLER END -------------------------

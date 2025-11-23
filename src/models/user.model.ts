@@ -48,6 +48,14 @@ userSchema.pre("save", function (next) {
   next();
 });
 
+// UNTUK TIDAK MENAMPILKAN PASSWORD SAAT LOGIN SUCCESS
+
+userSchema.methods.toJSON = function () {
+  const user = this.toObject();
+  delete user.password;
+  return user;
+};
+
 const userModel = mongoose.model("User", userSchema);
 
 export default userModel;

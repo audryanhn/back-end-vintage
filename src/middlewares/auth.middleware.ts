@@ -7,14 +7,14 @@ export default (req: IReqUser, res: Response, next: NextFunction) => {
   const authorization: string | undefined = req.headers?.authorization;
 
   if (!authorization) {
-    response.forbidden(res, "Unauthorized, please add your accessToken");
+    response.unauthorized(res, "Unauthorized, please add your accessToken");
     return;
   }
 
   const [prefix, token] = authorization?.split(" ");
 
   if (!(prefix === "Bearer" && token)) {
-    response.forbidden(res, "Unauthorized, token is invalid");
+    response.unauthorized(res, "Unauthorized, token is invalid");
   }
 
   const result = getUserData(token);

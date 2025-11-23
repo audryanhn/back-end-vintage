@@ -21,4 +21,9 @@ export default {
       data,
     });
   },
+  unauthorized(res: Response, message: string, data: any = null) {
+    return res
+      .status(401)
+      .json({ meta: { status: "401 - Unauthorized", message }, data });
+  },
 };

@@ -13,3 +13,7 @@ export type TLogin = {
 };
 
 // ------------------- AUTH CONTROLLER END -------------------------
+
+export type TGetProducts = {
+  identifier: string;
+};

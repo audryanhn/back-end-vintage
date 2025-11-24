@@ -29,6 +29,7 @@
 // --------------------- CARA PERTAMA CONNECT DB ----------------------------
 
 import bodyParser from "body-parser";
+import cors from "cors";
 import express from "express";
 import router from "./routes/api";
 import "./utils/database";
@@ -37,6 +38,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", (req, res, next) => {
   res.status(200).json({ message: "Server Is Running" });

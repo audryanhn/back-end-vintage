@@ -33,3 +33,21 @@ export interface IReqUser extends Request {
 }
 
 // ------------------------- FOR JWT TOKEN END -------------------------
+
+// ------------------------- FOR JWT TOKEN START -------------------------
+
+export interface IProduct {
+  brand: string;
+  category: string;
+  condition: string;
+  description: string;
+  from: string;
+  images: Array<string>;
+  price: number;
+  product_name: string;
+  shipping: number;
+  size: string;
+  store_name: string;
+}
+
+// ------------------------- FOR JWT TOKEN END -------------------------

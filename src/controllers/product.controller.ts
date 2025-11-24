@@ -4,6 +4,11 @@ import response from "../utils/response";
 
 export default {
   async getProducts(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Product']
+     
+     */
+
     try {
       const { identifier } = req.params;
 

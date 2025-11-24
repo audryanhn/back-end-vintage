@@ -17,8 +17,25 @@ const registerValidateSchema = Yup.object({
     .oneOf([Yup.ref("password"), "matched"], "Password not match"),
 });
 
+const loginValidateSchema = Yup.object({
+  identifier: Yup.string().required(),
+  password: Yup.string().required(),
+});
+
 export default {
   async register(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Auth']
+     #swagger.requestBody = {
+     required :  true,
+     content : {
+      "application/json" : {
+        schema : {$ref : "#/components/schemas/RegisterRequest"}
+      }
+     }
+     }
+     */
+
     const { fullName, username, email, password, confirmPassword } =
       req.body as unknown as TRegister;
 
@@ -46,7 +63,18 @@ export default {
   },
 
   async login(req: Request, res: Response) {
-    const { identifier, password }: TLogin = req.body as unknown as TLogin;
+    /**
+     #swagger.tags = ['Auth']
+     #swagger.requestBody = {
+     required : true,
+     content : {
+      "application/json" : {
+      schema : {$ref : "#/components/schemas/LoginRequest"}
+      }
+     }
+     }
+     */
+    const { identifier, password } = req.body as unknown as TLogin;
 
     try {
       const userByIdentifier = await userModel.findOne({
@@ -87,6 +115,12 @@ export default {
   },
 
   async me(req: IReqUser, res: Response) {
+    /**
+     #swagger.tags = ['Auth']
+     #swagger.security = [{
+     "bearerAuth" : []
+     }]
+     */
     const user = req.user;
 
     if (!user) {

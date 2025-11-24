@@ -5,20 +5,26 @@ import response from "../utils/response";
 export default {
   async getProducts(req: Request, res: Response) {
     try {
-      const { identifier } = req.body;
+      const { identifier } = req.params;
+
+      if (!identifier) {
+        response.notFound(res, "Product Not Found");
+        return;
+      }
+
       const result = await productModel.find({
         $or: [
           {
-            brand: identifier,
+            brand: new RegExp(`^${identifier}$`, "i"),
           },
           {
-            category: identifier,
+            category: new RegExp(`^${identifier}`, "i"),
           },
         ],
       });
 
-      if (!result) {
-        response.badRequest(res, "Product not found");
+      if (result.length === 0) {
+        response.notFound(res, "Product not found");
         return;
       }
 

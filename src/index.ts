@@ -38,6 +38,11 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
+app.use("/", (req, res, next) => {
+  res.status(200).json({ message: "Server Is Running" });
+  next();
+});
+
 app.use("/api", router);
 
 app.listen(PORT, () => {

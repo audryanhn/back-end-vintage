@@ -48,6 +48,22 @@ export default {
         confirmPassword,
       });
 
+      const checkUnique = await userModel.findOne({
+        $or: [
+          {
+            username,
+          },
+          {
+            email,
+          },
+        ],
+      });
+
+      if (checkUnique) {
+        response.badRequest(res, "Your Username or your Email is registered");
+        return;
+      }
+
       const result = await userModel.create({
         fullName,
         username,

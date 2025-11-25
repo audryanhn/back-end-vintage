@@ -80,6 +80,19 @@
         ]
       }
     },
+    "/product": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/product/{identifier}": {
       "get": {
         "tags": [

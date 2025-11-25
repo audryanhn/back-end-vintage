@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/auth/register", authController.register);
 router.post("/auth/login", authController.login);
 router.get("/auth/me", authMiddleware, authController.me);
-router.get("/product/:identifier", productController.getProducts);
+router.get("/product", productController.getAllProducts);
+router.get("/product/:identifier", productController.getProductByIdentifier);
 
 export default router;

@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { MongooseError } from "mongoose";
 import productModel from "../models/product.model";
 import response from "../utils/response";
 
 export default {
-  async getProducts(req: Request, res: Response) {
+  async getProductByIdentifier(req: Request, res: Response) {
     /**
      #swagger.tags = ['Product']
      
@@ -38,6 +39,26 @@ export default {
       const err = error as unknown as Error;
 
       response.badRequest(res, `Something went wrong : ${err.message}`);
+    }
+  },
+
+  async getAllProducts(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Product']
+     */
+    try {
+      const result = await productModel.find();
+
+      if (!result) {
+        response.notFound(res, "No Products Found");
+        return;
+      }
+
+      response.success(res, "Success get all products data", result);
+    } catch (error) {
+      if (error instanceof MongooseError) {
+        response.badRequest(res, `get all product error : ${error.message}`);
+      }
     }
   },
 };

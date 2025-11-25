@@ -93,7 +93,7 @@
         }
       }
     },
-    "/product/{identifier}": {
+    "/product/{id}": {
       "get": {
         "tags": [
           "Product"
@@ -101,7 +101,40 @@
         "description": "",
         "parameters": [
           {
-            "name": "identifier",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/wishlist": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/wishlist/{userId}": {
+      "get": {
+        "tags": [
+          "Wishlist"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "userId",
             "in": "path",
             "required": true,
             "schema": {

@@ -16,8 +16,12 @@ router.get("/product", productController.getAllProducts);
 router.get("/product/:id", productController.getProductById);
 
 // Wishlist endpoint
+router.post("/wishlist/:userId/:productId", wishlistController.addWishlist);
+router.delete(
+  "/wishlist/:userId/:productId",
+  wishlistController.removeWishlist
+);
 router.get("/wishlist", wishlistController.getAllWishlist);
 router.get("/wishlist/:userId", wishlistController.getWishlist);
-// router.put("/wishlist/:userId");
 
 export default router;

@@ -59,10 +59,8 @@ export interface IProduct {
 // ------------------------- FOR WISHLISTSCHEMA START -------------------------
 
 export interface IWishlist {
-  userId: string;
-  username: string;
-  email: string;
-  products: Array<string>;
+  userId: Types.ObjectId;
+  products: Array<Types.ObjectId>;
 }
 
 // ------------------------- FOR WISHLISTSCHEMA END -------------------------

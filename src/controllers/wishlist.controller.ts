@@ -4,8 +4,14 @@ import response from "../utils/response";
 
 export default {
   async getAllWishlist(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Wishlist']
+     */
     try {
-      const result = await wishlistModel.find();
+      const result = await wishlistModel
+        .find()
+        .populate("userId", "username")
+        .populate("products", "product_name");
       if (result.length === 0) {
         response.success(res, "wishlist is empty", []);
       }
@@ -27,7 +33,10 @@ export default {
       return;
     }
 
-    const result = await wishlistModel.findOne({ userId: userId });
+    const result = await wishlistModel
+      .findOne({ userId: userId })
+      .populate("userId", "username")
+      .populate("products", "product_name");
 
     if (!result) {
       response.notFound(res, "Wishlist is Not Found or empty");
@@ -40,6 +49,65 @@ export default {
     } catch (error) {
       const err = error as unknown as Error;
       response.badRequest(res, `getWishlist error - ${err.message}`);
+    }
+  },
+
+  async addWishlist(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Wishlist']
+     */
+
+    const { userId, productId } = req.params;
+
+    try {
+      const result = await wishlistModel
+        .findOneAndUpdate(
+          {
+            userId,
+          },
+          {
+            $addToSet: { products: productId },
+          },
+          { upsert: true, new: true }
+        )
+        .populate("userId", "username")
+        .populate("products", "product_name");
+
+      if (!result) {
+        response.badRequest(res, "Error occured while adding wishlist");
+        return;
+      }
+
+      response.success(res, "Success add product to wishlist", result);
+    } catch (error) {
+      const err = error as unknown as Error;
+
+      response.badRequest(res, `addWishlist error - ${err.message}`);
+    }
+  },
+
+  async removeWishlist(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Wishlist']
+     */
+    const { userId, productId } = req.params;
+    try {
+      const result = await wishlistModel.findOneAndUpdate(
+        { userId },
+        {
+          $pull: { products: productId },
+        },
+        { new: true }
+      );
+
+      if (!result) {
+        response.badRequest(res, "Error while remove product from wishlist");
+        result;
+      }
+      response.success(res, "Success remove product from wishlist", result);
+    } catch (error) {
+      const err = error as unknown as Error;
+      response.badRequest(res, `removeWishlist error - ${err.message}`);
     }
   },
 };

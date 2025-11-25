@@ -3,14 +3,18 @@ import { IWishlist } from "../utils/interfaces";
 
 const wishlistSchema = new Schema<IWishlist>({
   userId: {
-    type: Schema.Types.String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    unique: true,
   },
-  products: {
-    type: [Schema.Types.String],
-  },
+  products: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
 
-const wishlistModel = mongoose.model("wishlist", wishlistSchema);
+const wishlistModel = mongoose.model("Wishlist", wishlistSchema);
 
 export default wishlistModel;

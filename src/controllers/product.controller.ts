@@ -4,32 +4,23 @@ import productModel from "../models/product.model";
 import response from "../utils/response";
 
 export default {
-  async getProductByIdentifier(req: Request, res: Response) {
+  async getProductById(req: Request, res: Response) {
     /**
      #swagger.tags = ['Product']
      
      */
 
     try {
-      const { identifier } = req.params;
+      const { id } = req.params;
 
-      if (!identifier) {
+      if (!id) {
         response.notFound(res, "Product Not Found");
         return;
       }
 
-      const result = await productModel.find({
-        $or: [
-          {
-            brand: new RegExp(`^${identifier}$`, "i"),
-          },
-          {
-            category: new RegExp(`^${identifier}`, "i"),
-          },
-        ],
-      });
+      const result = await productModel.findById(id);
 
-      if (result.length === 0) {
+      if (!result) {
         response.notFound(res, "Product not found");
         return;
       }

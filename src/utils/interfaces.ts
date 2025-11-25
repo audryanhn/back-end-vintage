@@ -1,6 +1,8 @@
 import { Request } from "express";
 import { Types } from "mongoose";
 
+// ------------------------- FOR USERSCHEMA START -------------------------
+
 export interface IUser {
   fullName: string;
   username: string;
@@ -11,6 +13,8 @@ export interface IUser {
   isActive: boolean;
   activationCode: string;
 }
+
+// ------------------------- FOR USERSCHEMA END --------------------------
 
 // ------------------------- FOR JWT TOKEN START -------------------------
 
@@ -34,7 +38,7 @@ export interface IReqUser extends Request {
 
 // ------------------------- FOR JWT TOKEN END -------------------------
 
-// ------------------------- FOR JWT TOKEN START -------------------------
+// ------------------------- FOR PRODUCTSCHEMA START -------------------------
 
 export interface IProduct {
   brand: string;
@@ -42,7 +46,7 @@ export interface IProduct {
   condition: string;
   description: string;
   from: string;
-  images: Array<string>;
+  images: string[];
   price: number;
   product_name: string;
   shipping: number;
@@ -50,4 +54,15 @@ export interface IProduct {
   store_name: string;
 }
 
-// ------------------------- FOR JWT TOKEN END -------------------------
+// ------------------------- FOR PRODUCTSCHEMA END -------------------------
+
+// ------------------------- FOR WISHLISTSCHEMA START -------------------------
+
+export interface IWishlist {
+  userId: string;
+  username: string;
+  email: string;
+  products: Array<string>;
+}
+
+// ------------------------- FOR WISHLISTSCHEMA END -------------------------

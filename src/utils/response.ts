@@ -26,7 +26,7 @@ export default {
       .status(401)
       .json({ meta: { status: "401 - Unauthorized", message }, data });
   },
-  notFound(res: Response, message: string, data: any = []) {
+  notFound(res: Response, message: string, data: any = null) {
     return res.status(404).json({
       meta: {
         status: "404 - Not Found",

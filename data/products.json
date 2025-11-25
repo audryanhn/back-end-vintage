@@ -1,0 +1,303 @@
+[
+  {
+    "brand": "NARA",
+    "category": "women-clothing",
+    "condition": "good",
+    "description": "Tas selempang elegan dengan desain minimalis cocok untuk aktivitas harian.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/23223851/pexels-photo-23223851.jpeg",
+      "https://images.pexels.com/photos/23223849/pexels-photo-23223849.jpeg"
+    ],
+    "price": 1200000,
+    "product_name": "NARA Tas Selempang Wanita",
+    "shipping": 20000,
+    "size": "M",
+    "store_name": "NARA"
+  },
+  {
+    "brand": "Uniqlo",
+    "category": "men-clothing",
+    "condition": "excellent",
+    "description": "Kemeja lengan panjang bahan premium, nyaman dipakai seharian.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg"
+    ],
+    "price": 349000,
+    "product_name": "Uniqlo Kemeja Pria Premium",
+    "shipping": 15000,
+    "size": "L",
+    "store_name": "Uniqlo ID"
+  },
+  {
+    "brand": "ZARA",
+    "category": "women-clothing",
+    "condition": "good",
+    "description": "Blazer wanita bergaya modern cocok untuk outfit formal maupun kasual.",
+    "from": "Surabaya",
+    "images": [
+      "https://images.pexels.com/photos/7679727/pexels-photo-7679727.jpeg"
+    ],
+    "price": 899000,
+    "product_name": "ZARA Blazer Wanita Modern",
+    "shipping": 25000,
+    "size": "S",
+    "store_name": "ZARA Official"
+  },
+  {
+    "brand": "Converse",
+    "category": "shoes",
+    "condition": "like-new",
+    "description": "Sepatu Converse klasik warna putih, cocok untuk semua gaya.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"
+    ],
+    "price": 799000,
+    "product_name": "Converse Chuck Taylor Classic",
+    "shipping": 20000,
+    "size": "42",
+    "store_name": "Converse Store"
+  },
+  {
+    "brand": "Adidas",
+    "category": "shoes",
+    "condition": "good",
+    "description": "Sepatu running Adidas dengan bantalan empuk dan ringan.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/8482803/pexels-photo-8482803.jpeg"
+    ],
+    "price": 1299000,
+    "product_name": "Adidas RunFast 3",
+    "shipping": 22000,
+    "size": "43",
+    "store_name": "Adidas Indonesia"
+  },
+  {
+    "brand": "Gucci",
+    "category": "bags",
+    "condition": "excellent",
+    "description": "Tas tangan Gucci original dengan finishing premium.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/9891360/pexels-photo-9891360.jpeg"
+    ],
+    "price": 18500000,
+    "product_name": "Gucci Leather Handbag",
+    "shipping": 50000,
+    "size": "M",
+    "store_name": "Luxury Vault"
+  },
+  {
+    "brand": "H&M",
+    "category": "men-clothing",
+    "condition": "good",
+    "description": "Kaos basic pria dengan bahan katun premium.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg"
+    ],
+    "price": 149000,
+    "product_name": "H&M Kaos Basic Pria",
+    "shipping": 10000,
+    "size": "XL",
+    "store_name": "H&M Indonesia"
+  },
+  {
+    "brand": "Herschel",
+    "category": "bags",
+    "condition": "good",
+    "description": "Backpack Herschel klasik dengan ruang besar dan ringan.",
+    "from": "Semarang",
+    "images": [
+      "https://images.pexels.com/photos/374574/pexels-photo-374574.jpeg"
+    ],
+    "price": 1299000,
+    "product_name": "Herschel Little America Backpack",
+    "shipping": 18000,
+    "size": "L",
+    "store_name": "Herschel Store"
+  },
+  {
+    "brand": "Levi's",
+    "category": "men-clothing",
+    "condition": "excellent",
+    "description": "Celana jeans Levi's original model 501.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg"
+    ],
+    "price": 999000,
+    "product_name": "Levi's 501 Original Jeans",
+    "shipping": 20000,
+    "size": "32",
+    "store_name": "Levi's Store"
+  },
+  {
+    "brand": "Nike",
+    "category": "shoes",
+    "condition": "good",
+    "description": "Sneakers Nike Air Force 1 dengan desain ikonik.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/2529147/pexels-photo-2529147.jpeg"
+    ],
+    "price": 1549000,
+    "product_name": "Nike Air Force 1 Low",
+    "shipping": 23000,
+    "size": "42",
+    "store_name": "Nike Official"
+  },
+  {
+    "brand": "Uniqlo",
+    "category": "women-clothing",
+    "condition": "good",
+    "description": "Cardigan wanita bahan halus dan ringan.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/7679870/pexels-photo-7679870.jpeg"
+    ],
+    "price": 299000,
+    "product_name": "Uniqlo Women Soft Cardigan",
+    "shipping": 10000,
+    "size": "M",
+    "store_name": "Uniqlo ID"
+  },
+  {
+    "brand": "Pull&Bear",
+    "category": "men-clothing",
+    "condition": "good",
+    "description": "Hoodie nyaman untuk aktivitas santai.",
+    "from": "Surabaya",
+    "images": [
+      "https://images.pexels.com/photos/6311662/pexels-photo-6311662.jpeg"
+    ],
+    "price": 459000,
+    "product_name": "Pull&Bear Hoodie Pria",
+    "shipping": 15000,
+    "size": "L",
+    "store_name": "Pull&Bear"
+  },
+  {
+    "brand": "Adidas",
+    "category": "sports",
+    "condition": "excellent",
+    "description": "Jersey original dengan kualitas bahan breathable.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg"
+    ],
+    "price": 399000,
+    "product_name": "Adidas Performance Jersey",
+    "shipping": 12000,
+    "size": "M",
+    "store_name": "Adidas Indonesia"
+  },
+  {
+    "brand": "Nike",
+    "category": "sports",
+    "condition": "good",
+    "description": "Celana training Nike dengan bahan yang ringan.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/6311663/pexels-photo-6311663.jpeg"
+    ],
+    "price": 349000,
+    "product_name": "Nike Training Pants",
+    "shipping": 13000,
+    "size": "L",
+    "store_name": "Nike Official"
+  },
+  {
+    "brand": "Guess",
+    "category": "bags",
+    "condition": "excellent",
+    "description": "Tas bahu Guess dengan material premium.",
+    "from": "Medan",
+    "images": [
+      "https://images.pexels.com/photos/9891345/pexels-photo-9891345.jpeg"
+    ],
+    "price": 1650000,
+    "product_name": "Guess Shoulder Bag",
+    "shipping": 25000,
+    "size": "M",
+    "store_name": "Guess ID"
+  },
+  {
+    "brand": "Charles & Keith",
+    "category": "women-clothing",
+    "condition": "good",
+    "description": "Sepatu heels elegan dari Charles & Keith.",
+    "from": "Jakarta",
+    "images": [
+      "https://images.pexels.com/photos/6311658/pexels-photo-6311658.jpeg"
+    ],
+    "price": 699000,
+    "product_name": "C&K Elegant Heels",
+    "shipping": 20000,
+    "size": "38",
+    "store_name": "Charles & Keith"
+  },
+  {
+    "brand": "ZARA",
+    "category": "women-clothing",
+    "condition": "like-new",
+    "description": "Dress wanita dengan motif floral dan bahan premium.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg"
+    ],
+    "price": 559000,
+    "product_name": "ZARA Floral Dress",
+    "shipping": 15000,
+    "size": "M",
+    "store_name": "ZARA Official"
+  },
+  {
+    "brand": "Hollister",
+    "category": "men-clothing",
+    "condition": "excellent",
+    "description": "Kaos casual Hollister bahan super lembut.",
+    "from": "Denpasar",
+    "images": [
+      "https://images.pexels.com/photos/2983462/pexels-photo-2983462.jpeg"
+    ],
+    "price": 329000,
+    "product_name": "Hollister Soft Tee",
+    "shipping": 12000,
+    "size": "L",
+    "store_name": "Hollister"
+  },
+  {
+    "brand": "Fila",
+    "category": "shoes",
+    "condition": "good",
+    "description": "Sepatu sneakers Fila model retro.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/2529144/pexels-photo-2529144.jpeg"
+    ],
+    "price": 899000,
+    "product_name": "Fila Retro Sneakers",
+    "shipping": 21000,
+    "size": "42",
+    "store_name": "Fila Store"
+  },
+  {
+    "brand": "NARA",
+    "category": "women-clothing",
+    "condition": "excellent",
+    "description": "Tas jinjing wanita dengan desain minimalis premium.",
+    "from": "Bandung",
+    "images": [
+      "https://images.pexels.com/photos/1488462/pexels-photo-1488462.jpeg"
+    ],
+    "price": 1350000,
+    "product_name": "NARA Tote Bag",
+    "shipping": 20000,
+    "size": "M",
+    "store_name": "NARA"
+  }
+]

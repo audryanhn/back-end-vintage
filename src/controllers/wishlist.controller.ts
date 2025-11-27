@@ -84,11 +84,12 @@ export default {
         {
           $addToSet: { like: userId },
         },
-        { upsert: true, new: true }
+        { new: true }
       );
 
       if (!updateLikes) {
         response.badRequest(res, `Error occured while adding product likes`);
+        return;
       }
 
       response.success(res, "Success add product to wishlist", result);

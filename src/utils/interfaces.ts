@@ -52,6 +52,7 @@ export interface IProduct {
   shipping: number;
   size: string;
   store_name: string;
+  like: Array<Types.ObjectId>;
 }
 
 // ------------------------- FOR PRODUCTSCHEMA END -------------------------
@@ -64,3 +65,12 @@ export interface IWishlist {
 }
 
 // ------------------------- FOR WISHLISTSCHEMA END -------------------------
+
+// ------------------------- FOR CARTSCHEMA START -------------------------
+
+export interface ICart {
+  userId: Types.ObjectId;
+  products: Array<Types.ObjectId>;
+}
+
+// ------------------------- FOR CARTSCHEMA END -------------------------

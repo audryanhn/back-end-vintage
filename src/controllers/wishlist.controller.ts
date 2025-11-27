@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import productModel from "../models/product.model";
 import wishlistModel from "../models/wishlist.model";
 import response from "../utils/response";
 
@@ -68,7 +69,7 @@ export default {
           {
             $addToSet: { products: productId },
           },
-          { upsert: true, new: true }
+          { upsert: true, new: true } // UPSERT BUAT BIKIN BARU KALO KAGA ADA
         )
         .populate("userId", "username")
         .populate("products", "product_name");
@@ -76,6 +77,18 @@ export default {
       if (!result) {
         response.badRequest(res, "Error occured while adding wishlist");
         return;
+      }
+
+      const updateLikes = await productModel.findOneAndUpdate(
+        { _id: productId },
+        {
+          $addToSet: { like: userId },
+        },
+        { upsert: true, new: true }
+      );
+
+      if (!updateLikes) {
+        response.badRequest(res, `Error occured while adding product likes`);
       }
 
       response.success(res, "Success add product to wishlist", result);
@@ -102,9 +115,24 @@ export default {
 
       if (!result) {
         response.badRequest(res, "Error while remove product from wishlist");
-        result;
+        return;
       }
-      response.success(res, "Success remove product from wishlist", result);
+
+      const updateLikes = await productModel.findOneAndUpdate(
+        { _id: productId },
+        { $pull: { like: userId } },
+        { new: true }
+      );
+
+      if (!updateLikes) {
+        response.badRequest(res, "Error occured while removing likes");
+      }
+
+      response.success(
+        res,
+        "Success remove product from wishlist and likes",
+        result
+      );
     } catch (error) {
       const err = error as unknown as Error;
       response.badRequest(res, `removeWishlist error - ${err.message}`);

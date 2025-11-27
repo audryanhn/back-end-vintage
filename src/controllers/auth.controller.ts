@@ -90,9 +90,12 @@ export default {
      }
      }
      */
+
     const { identifier, password } = req.body as unknown as TLogin;
 
     try {
+      await loginValidateSchema.validate({ identifier, password });
+
       const userByIdentifier = await userModel.findOne({
         $or: [
           {

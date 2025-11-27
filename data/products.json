@@ -13,7 +13,8 @@
     "product_name": "NARA Tas Selempang Wanita",
     "shipping": 20000,
     "size": "M",
-    "store_name": "NARA"
+    "store_name": "NARA",
+    "like": []
   },
   {
     "brand": "Uniqlo",
@@ -28,7 +29,8 @@
     "product_name": "Uniqlo Kemeja Pria Premium",
     "shipping": 15000,
     "size": "L",
-    "store_name": "Uniqlo ID"
+    "store_name": "Uniqlo ID",
+    "like": []
   },
   {
     "brand": "ZARA",
@@ -43,7 +45,8 @@
     "product_name": "ZARA Blazer Wanita Modern",
     "shipping": 25000,
     "size": "S",
-    "store_name": "ZARA Official"
+    "store_name": "ZARA Official",
+    "like": []
   },
   {
     "brand": "Converse",
@@ -58,7 +61,8 @@
     "product_name": "Converse Chuck Taylor Classic",
     "shipping": 20000,
     "size": "42",
-    "store_name": "Converse Store"
+    "store_name": "Converse Store",
+    "like": []
   },
   {
     "brand": "Adidas",
@@ -73,7 +77,8 @@
     "product_name": "Adidas RunFast 3",
     "shipping": 22000,
     "size": "43",
-    "store_name": "Adidas Indonesia"
+    "store_name": "Adidas Indonesia",
+    "like": []
   },
   {
     "brand": "Gucci",
@@ -88,7 +93,8 @@
     "product_name": "Gucci Leather Handbag",
     "shipping": 50000,
     "size": "M",
-    "store_name": "Luxury Vault"
+    "store_name": "Luxury Vault",
+    "like": []
   },
   {
     "brand": "H&M",
@@ -103,7 +109,8 @@
     "product_name": "H&M Kaos Basic Pria",
     "shipping": 10000,
     "size": "XL",
-    "store_name": "H&M Indonesia"
+    "store_name": "H&M Indonesia",
+    "like": []
   },
   {
     "brand": "Herschel",
@@ -118,7 +125,8 @@
     "product_name": "Herschel Little America Backpack",
     "shipping": 18000,
     "size": "L",
-    "store_name": "Herschel Store"
+    "store_name": "Herschel Store",
+    "like": []
   },
   {
     "brand": "Levi's",
@@ -133,7 +141,8 @@
     "product_name": "Levi's 501 Original Jeans",
     "shipping": 20000,
     "size": "32",
-    "store_name": "Levi's Store"
+    "store_name": "Levi's Store",
+    "like": []
   },
   {
     "brand": "Nike",
@@ -148,7 +157,8 @@
     "product_name": "Nike Air Force 1 Low",
     "shipping": 23000,
     "size": "42",
-    "store_name": "Nike Official"
+    "store_name": "Nike Official",
+    "like": []
   },
   {
     "brand": "Uniqlo",
@@ -163,7 +173,8 @@
     "product_name": "Uniqlo Women Soft Cardigan",
     "shipping": 10000,
     "size": "M",
-    "store_name": "Uniqlo ID"
+    "store_name": "Uniqlo ID",
+    "like": []
   },
   {
     "brand": "Pull&Bear",
@@ -178,7 +189,8 @@
     "product_name": "Pull&Bear Hoodie Pria",
     "shipping": 15000,
     "size": "L",
-    "store_name": "Pull&Bear"
+    "store_name": "Pull&Bear",
+    "like": []
   },
   {
     "brand": "Adidas",
@@ -193,7 +205,8 @@
     "product_name": "Adidas Performance Jersey",
     "shipping": 12000,
     "size": "M",
-    "store_name": "Adidas Indonesia"
+    "store_name": "Adidas Indonesia",
+    "like": []
   },
   {
     "brand": "Nike",
@@ -208,7 +221,8 @@
     "product_name": "Nike Training Pants",
     "shipping": 13000,
     "size": "L",
-    "store_name": "Nike Official"
+    "store_name": "Nike Official",
+    "like": []
   },
   {
     "brand": "Guess",
@@ -223,7 +237,8 @@
     "product_name": "Guess Shoulder Bag",
     "shipping": 25000,
     "size": "M",
-    "store_name": "Guess ID"
+    "store_name": "Guess ID",
+    "like": []
   },
   {
     "brand": "Charles & Keith",
@@ -238,7 +253,8 @@
     "product_name": "C&K Elegant Heels",
     "shipping": 20000,
     "size": "38",
-    "store_name": "Charles & Keith"
+    "store_name": "Charles & Keith",
+    "like": []
   },
   {
     "brand": "ZARA",
@@ -253,7 +269,8 @@
     "product_name": "ZARA Floral Dress",
     "shipping": 15000,
     "size": "M",
-    "store_name": "ZARA Official"
+    "store_name": "ZARA Official",
+    "like": []
   },
   {
     "brand": "Hollister",
@@ -268,7 +285,8 @@
     "product_name": "Hollister Soft Tee",
     "shipping": 12000,
     "size": "L",
-    "store_name": "Hollister"
+    "store_name": "Hollister",
+    "like": []
   },
   {
     "brand": "Fila",
@@ -283,7 +301,8 @@
     "product_name": "Fila Retro Sneakers",
     "shipping": 21000,
     "size": "42",
-    "store_name": "Fila Store"
+    "store_name": "Fila Store",
+    "like": []
   },
   {
     "brand": "NARA",
@@ -298,6 +317,7 @@
     "product_name": "NARA Tote Bag",
     "shipping": 20000,
     "size": "M",
-    "store_name": "NARA"
+    "store_name": "NARA",
+    "like": []
   }
 ]

@@ -12,6 +12,7 @@ router.post("/auth/login", authController.login);
 router.get("/auth/me", authMiddleware, authController.me);
 
 // Product endpoint
+router.post("/product/register", productController.addProduct);
 router.get("/product", productController.getAllProducts);
 router.get("/product/:id", productController.getProductById);
 

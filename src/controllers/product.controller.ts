@@ -1,9 +1,57 @@
 import { Request, Response } from "express";
 import { MongooseError } from "mongoose";
 import productModel from "../models/product.model";
+import { IProduct } from "../utils/interfaces";
 import response from "../utils/response";
 
 export default {
+  async addProduct(req: Request, res: Response) {
+    /**
+     #swagger.tags = ['Product']
+     */
+
+    const {
+      brand,
+      category,
+      condition,
+      description,
+      from,
+      images,
+      price,
+      product_name,
+      shipping,
+      size,
+      store_name,
+      like,
+    } = req.body as IProduct;
+    try {
+      const result = await productModel.create({
+        brand,
+        category,
+        condition,
+        description,
+        from,
+        images,
+        price,
+        product_name,
+        shipping,
+        size,
+        store_name,
+        like,
+      });
+
+      if (!result) {
+        response.badRequest(res, "Error occured while adding product");
+        return;
+      }
+
+      response.success(res, "Success add product!", result);
+    } catch (error) {
+      const err = error as unknown as Error;
+      response.badRequest(res, `Add Product error - ${err.message}`);
+    }
+  },
+
   async getProductById(req: Request, res: Response) {
     /**
      #swagger.tags = ['Product']

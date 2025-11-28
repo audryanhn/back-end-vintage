@@ -114,7 +114,7 @@ export default {
           },
           { new: true }
         )
-        .populate("products", "product_name images price description");
+        .populate("products", "product_name images price description like");
 
       if (!result) {
         response.badRequest(

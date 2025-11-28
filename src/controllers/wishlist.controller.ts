@@ -37,7 +37,7 @@ export default {
     const result = await wishlistModel
       .findOne({ userId: userId })
       .populate("userId", "username")
-      .populate("products", "product_name images title price description");
+      .populate("products", "product_name images title price description like");
 
     if (!result) {
       response.notFound(res, "Wishlist is Not Found or empty");

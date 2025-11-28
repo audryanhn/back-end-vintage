@@ -68,9 +68,14 @@ export interface IWishlist {
 
 // ------------------------- FOR CARTSCHEMA START -------------------------
 
+export interface ICartItem {
+  productId: Types.ObjectId | string;
+  qty: number;
+}
+
 export interface ICart {
-  userId: Types.ObjectId;
-  products: Array<Types.ObjectId>;
+  userId: Types.ObjectId | string;
+  items: ICartItem[];
 }
 
 // ------------------------- FOR CARTSCHEMA END -------------------------

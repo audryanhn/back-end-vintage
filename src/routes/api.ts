@@ -1,5 +1,6 @@
 import express from "express";
 import authController from "../controllers/auth.controller";
+import cartController from "../controllers/cart.controller";
 import productController from "../controllers/product.controller";
 import wishlistController from "../controllers/wishlist.controller";
 import authMiddleware from "../middlewares/auth.middleware";
@@ -24,5 +25,8 @@ router.delete(
 );
 router.get("/wishlist", wishlistController.getAllWishlist);
 router.get("/wishlist/:userId", wishlistController.getWishlist);
+
+// Cart Endpoint
+router.post("/cart/:userId", cartController.addCart);
 
 export default router;

@@ -72,7 +72,7 @@ export default {
           { upsert: true, new: true } // UPSERT BUAT BIKIN BARU KALO KAGA ADA
         )
         .populate("userId", "username")
-        .populate("products", "product_name images price description");
+        .populate("products", "product_name images price description like");
 
       if (!result) {
         response.badRequest(res, "Error occured while adding wishlist");
@@ -117,7 +117,10 @@ export default {
         .populate("products", "product_name images price description");
 
       if (!result) {
-        response.badRequest(res, "Error while remove product from wishlist");
+        response.badRequest(
+          res,
+          "Error while remove product from wishlist like"
+        );
         return;
       }
 

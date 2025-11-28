@@ -12,19 +12,18 @@ export default {
     const { userId } = req.params;
     const { items } = req.body as ICart;
 
+    const itemSatuan = items.map((item) => ({
+      productId: new Types.ObjectId(item.productId),
+      qty: item.qty ?? 1,
+    }));
     try {
-      const itemSatuan = items.map((item) => ({
-        productId: new Types.ObjectId(item.productId),
-        qty: item.qty,
-      }));
-
       // For every item: try increment if exists, else push
       for (const item of itemSatuan) {
         const updated = await cartModel
           .findOneAndUpdate(
             { userId, "items.productId": item.productId },
             {
-              $inc: { "items.qty": item.qty },
+              $inc: { "items.$.qty": item.qty },
             },
             { new: true }
           )

@@ -72,7 +72,7 @@ export default {
           { upsert: true, new: true } // UPSERT BUAT BIKIN BARU KALO KAGA ADA
         )
         .populate("userId", "username")
-        .populate("products", "product_name");
+        .populate("products", "product_name images title price description");
 
       if (!result) {
         response.badRequest(res, "Error occured while adding wishlist");
@@ -106,13 +106,15 @@ export default {
      */
     const { userId, productId } = req.params;
     try {
-      const result = await wishlistModel.findOneAndUpdate(
-        { userId },
-        {
-          $pull: { products: productId },
-        },
-        { new: true }
-      );
+      const result = await wishlistModel
+        .findOneAndUpdate(
+          { userId },
+          {
+            $pull: { products: productId },
+          },
+          { new: true }
+        )
+        .populate("products", "product_name images title price description");
 
       if (!result) {
         response.badRequest(res, "Error while remove product from wishlist");

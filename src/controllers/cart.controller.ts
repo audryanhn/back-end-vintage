@@ -11,7 +11,12 @@ export default {
      */
     const { userId } = req.params;
     try {
-      const result = await cartModel.find({ userId });
+      const result = await cartModel
+        .find({ userId })
+        .populate(
+          "items.productId",
+          "product_name brand like image description price"
+        );
       if (!result) {
         response.badRequest(res, "error occured while get cart info");
         return;

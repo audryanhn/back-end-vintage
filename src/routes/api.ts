@@ -27,6 +27,9 @@ router.get("/wishlist", wishlistController.getAllWishlist);
 router.get("/wishlist/:userId", wishlistController.getWishlist);
 
 // Cart Endpoint
+router.get("/cart/:userId", cartController.getCart);
 router.post("/cart/:userId", cartController.addCart);
+router.put("/cart/:userId/:productId", cartController.decreaseQuantity);
+router.delete("/cart/:userId/:productId", cartController.removeProduct);
 
 export default router;

@@ -170,14 +170,15 @@ export default {
     try {
       const result = await productModel.find({
         $or: [
-          { category: identifier },
-          { brand: identifier },
-          { condition: identifier },
-          { from: identifier },
+          { category: { $regex: identifier, $options: "i" } },
+          { brand: { $regex: identifier, $options: "i" } },
+          { condition: { $regex: identifier, $options: "i" } },
+          { from: { $regex: identifier, $options: "i" } },
         ],
       });
 
-      if (!result) response.notFound(res, "identifier Not Found!");
+      if (!result || result.length === 0)
+        response.notFound(res, "identifier Not Found!");
 
       response.success(res, "success get data by identifier", result);
     } catch (error) {

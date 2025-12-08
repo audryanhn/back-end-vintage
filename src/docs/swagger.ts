@@ -62,6 +62,9 @@ const doc = {
         store_name: "NARA",
         like: [],
       },
+      ActionHandler: {
+        action: "decrease", // or "increase"
+      },
     },
   },
 };

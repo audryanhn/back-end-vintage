@@ -139,6 +139,60 @@
         }
       }
     },
+    "/product/filter/{type}/{orderBy}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/product/by/{identifier}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/wishlist/{userId}/{productId}": {
       "post": {
         "tags": [
@@ -317,6 +371,16 @@
           "default": {
             "description": ""
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionHandler"
+              }
+            }
+          }
         }
       },
       "delete": {
@@ -335,37 +399,6 @@
           },
           {
             "name": "productId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/collection/{type}/{orderBy}": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "type",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "orderBy",
             "in": "path",
             "required": true,
             "schema": {
@@ -504,6 +537,15 @@
             "type": "array",
             "example": [],
             "items": {}
+          }
+        }
+      },
+      "ActionHandler": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "example": "decrease"
           }
         }
       }

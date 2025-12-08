@@ -98,61 +98,92 @@ export default {
     }
   },
 
-  async decreaseQuantity(req: Request, res: Response) {
+  async actionHandler(req: Request, res: Response) {
     /**
      #swagger.tags = ['Cart']
+     #swagger.requestBody = {
+      required : true,
+      content : {
+        "application/json" : {
+        schema : {$ref : "#/components/schemas/ActionHandler"}
+        }
+      }
+     }
      */
 
     // Check user qty
     const { userId, productId } = req.params;
+    const { action } = req.body;
 
-    let decrease = await cartModel
-      .findOneAndUpdate(
-        { userId, "items.productId": productId },
-        {
-          $inc: { "items.$.qty": -1 },
-        },
-        { new: true }
-      )
-      .populate(
-        "items.productId",
-        "product_name brand title description image price like"
-      );
+    try {
+      if (action === "decrease") {
+        let decrease = await cartModel
+          .findOneAndUpdate(
+            { userId, "items.productId": productId },
+            {
+              $inc: { "items.$.qty": -1 },
+            },
+            { new: true }
+          )
+          .populate(
+            "items.productId",
+            "product_name brand title description image price like"
+          );
 
-    if (!decrease) {
-      response.badRequest(res, "Error occured while decreasing qty");
-    }
+        if (!decrease) {
+          response.badRequest(res, "Error occured while decreasing qty");
+        }
 
-    const checkQty = await cartModel.findOne({ userId });
+        const checkQty = await cartModel.findOne({ userId });
 
-    if (!checkQty) {
-      response.badRequest(res, "product is not find");
-      return;
-    }
-    const item = checkQty.items.find(
-      (i) => i.productId.toString() === productId
-    );
-
-    if (item && item.qty <= 0) {
-      decrease = await cartModel
-        .findOneAndUpdate(
-          { userId, "items.productId": productId },
-          {
-            $pull: { items: { productId } },
-          },
-          { new: true }
-        )
-        .populate(
-          "items.productId",
-          "product_name description title image price like"
+        if (!checkQty) {
+          response.badRequest(res, "product is not find");
+          return;
+        }
+        const item = checkQty.items.find(
+          (i) => i.productId.toString() === productId
         );
 
-      // response.success(res, "Success Remove Product", result);
-      // return;
-    }
+        if (item && item.qty <= 0) {
+          decrease = await cartModel
+            .findOneAndUpdate(
+              { userId, "items.productId": productId },
+              {
+                $pull: { items: { productId } },
+              },
+              { new: true }
+            )
+            .populate(
+              "items.productId",
+              "product_name description title image price like"
+            );
 
-    response.success(res, "Success Decreasing Quantity", decrease);
-    try {
+          // response.success(res, "Success Remove Product", result);
+          // return;
+        }
+
+        response.success(res, "Success Decreasing Quantity", decrease);
+      }
+
+      if (action === "increase") {
+        const result = await cartModel
+          .findOneAndUpdate(
+            { userId, "items.productId": productId },
+            {
+              $inc: { "items.$.qty": 1 },
+            },
+            {
+              new: true,
+            }
+          )
+          .populate(
+            "items.productId",
+            "product_name description title image price like"
+          );
+
+        if (!result) response.badRequest(res, "increase - item not found");
+        response.success(res, "success increase qty", result);
+      }
     } catch (error) {
       const err = error as unknown as Error;
       response.badRequest(res, `decreaseQuantity error ${err.message}`);

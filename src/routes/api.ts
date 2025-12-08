@@ -1,7 +1,6 @@
 import express from "express";
 import authController from "../controllers/auth.controller";
 import cartController from "../controllers/cart.controller";
-import collectionController from "../controllers/collection.controller";
 import productController from "../controllers/product.controller";
 import wishlistController from "../controllers/wishlist.controller";
 import authMiddleware from "../middlewares/auth.middleware";
@@ -17,6 +16,11 @@ router.get("/auth/me", authMiddleware, authController.me);
 router.post("/product/register", productController.addProduct);
 router.get("/product", productController.getAllProducts);
 router.get("/product/:id", productController.getProductById);
+router.get(
+  "/product/filter/:type/:orderBy",
+  productController.getProductByFilter
+);
+router.get("/product/by/:identifier", productController.getProductByIdentifier);
 
 // Wishlist endpoint
 router.post("/wishlist/:userId/:productId", wishlistController.addWishlist);
@@ -30,13 +34,7 @@ router.get("/wishlist/:userId", wishlistController.getWishlist);
 // Cart Endpoint
 router.get("/cart/:userId", cartController.getCart);
 router.post("/cart/:userId", cartController.addCart);
-router.put("/cart/:userId/:productId", cartController.decreaseQuantity);
+router.put("/cart/:userId/:productId", cartController.actionHandler);
 router.delete("/cart/:userId/:productId", cartController.removeProduct);
-
-// Collection endpoint
-router.get(
-  "/collection/:type/:orderBy",
-  collectionController.getProductByFilter
-);
 
 export default router;

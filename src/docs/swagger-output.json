@@ -92,48 +92,11 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "brand": {
-                    "example": "any"
-                  },
-                  "category": {
-                    "example": "any"
-                  },
-                  "condition": {
-                    "example": "any"
-                  },
-                  "description": {
-                    "example": "any"
-                  },
-                  "from": {
-                    "example": "any"
-                  },
-                  "images": {
-                    "example": "any"
-                  },
-                  "price": {
-                    "example": "any"
-                  },
-                  "product_name": {
-                    "example": "any"
-                  },
-                  "shipping": {
-                    "example": "any"
-                  },
-                  "size": {
-                    "example": "any"
-                  },
-                  "store_name": {
-                    "example": "any"
-                  },
-                  "like": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/ProductRegisterRequest"
               }
             }
           }
@@ -315,15 +278,11 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "items": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/AddCartRequest"
               }
             }
           }
@@ -389,6 +348,37 @@
           }
         }
       }
+    },
+    "/collection/{type}/{orderBy}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {
@@ -434,6 +424,86 @@
           "password": {
             "type": "string",
             "example": "12341234"
+          }
+        }
+      },
+      "AddCartRequest": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "type": "string",
+                  "example": "69286f135b3d66f86f6d040f"
+                },
+                "qty": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "ProductRegisterRequest": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "example": "NARA"
+          },
+          "category": {
+            "type": "string",
+            "example": "women-clothing"
+          },
+          "condition": {
+            "type": "string",
+            "example": "excellent"
+          },
+          "description": {
+            "type": "string",
+            "example": "Tas jinjing wanita dengan desain minimalis premium."
+          },
+          "from": {
+            "type": "string",
+            "example": "Bandung"
+          },
+          "images": {
+            "type": "array",
+            "example": [
+              "https://images.pexels.com/photos/1488462/pexels-photo-1488462.jpeg"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "price": {
+            "type": "number",
+            "example": 1350000
+          },
+          "product_name": {
+            "type": "string",
+            "example": "NARA Tote Bag"
+          },
+          "shipping": {
+            "type": "number",
+            "example": 20000
+          },
+          "size": {
+            "type": "string",
+            "example": "M"
+          },
+          "store_name": {
+            "type": "string",
+            "example": "NARA"
+          },
+          "like": {
+            "type": "array",
+            "example": [],
+            "items": {}
           }
         }
       }

@@ -8,6 +8,15 @@ export default {
   async addProduct(req: Request, res: Response) {
     /**
      #swagger.tags = ['Product']
+     #swagger.requestBody = {
+        required : true,
+        content : {
+        "application/json" : {
+        schema : {$ref : "#/components/schemas/ProductRegisterRequest"}
+            
+          }
+        }
+     }
      */
 
     const {

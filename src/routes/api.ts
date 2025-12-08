@@ -1,6 +1,7 @@
 import express from "express";
 import authController from "../controllers/auth.controller";
 import cartController from "../controllers/cart.controller";
+import collectionController from "../controllers/collection.controller";
 import productController from "../controllers/product.controller";
 import wishlistController from "../controllers/wishlist.controller";
 import authMiddleware from "../middlewares/auth.middleware";
@@ -31,5 +32,11 @@ router.get("/cart/:userId", cartController.getCart);
 router.post("/cart/:userId", cartController.addCart);
 router.put("/cart/:userId/:productId", cartController.decreaseQuantity);
 router.delete("/cart/:userId/:productId", cartController.removeProduct);
+
+// Collection endpoint
+router.get(
+  "/collection/:type/:orderBy",
+  collectionController.getProductByFilter
+);
 
 export default router;

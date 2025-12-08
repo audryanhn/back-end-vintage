@@ -37,6 +37,31 @@ const doc = {
         identifier: "ryangeming",
         password: "12341234",
       },
+
+      AddCartRequest: {
+        items: [
+          {
+            productId: "69286f135b3d66f86f6d040f",
+            qty: 1,
+          },
+        ],
+      },
+      ProductRegisterRequest: {
+        brand: "NARA",
+        category: "women-clothing",
+        condition: "excellent",
+        description: "Tas jinjing wanita dengan desain minimalis premium.",
+        from: "Bandung",
+        images: [
+          "https://images.pexels.com/photos/1488462/pexels-photo-1488462.jpeg",
+        ],
+        price: 1350000,
+        product_name: "NARA Tote Bag",
+        shipping: 20000,
+        size: "M",
+        store_name: "NARA",
+        like: [],
+      },
     },
   },
 };

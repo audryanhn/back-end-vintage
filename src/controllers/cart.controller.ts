@@ -32,6 +32,14 @@ export default {
   async addCart(req: Request, res: Response) {
     /**
      #swagger.tags=['Cart']
+     #swagger.requestBody = {
+        required : true,
+        content : {
+        "application/json" : {
+            schema : {$ref : "#/components/schemas/AddCartRequest"}
+          }
+        }
+     }
      */
     const { userId } = req.params;
     const { items } = req.body as ICart;

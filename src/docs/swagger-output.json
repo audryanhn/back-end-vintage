@@ -140,7 +140,7 @@
       }
     },
     "/product/filter/{type}/{orderBy}": {
-      "get": {
+      "post": {
         "tags": [
           "Product"
         ],
@@ -166,6 +166,16 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceFilter"
+              }
+            }
           }
         }
       }
@@ -546,6 +556,19 @@
           "action": {
             "type": "string",
             "example": "decrease"
+          }
+        }
+      },
+      "PriceFilter": {
+        "type": "object",
+        "properties": {
+          "lowest": {
+            "type": "number",
+            "example": 0
+          },
+          "highest": {
+            "type": "number",
+            "example": 0
           }
         }
       }

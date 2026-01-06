@@ -16,7 +16,7 @@ router.get("/auth/me", authMiddleware, authController.me);
 router.post("/product/register", productController.addProduct);
 router.get("/product", productController.getAllProducts);
 router.get("/product/:id", productController.getProductById);
-router.get(
+router.post(
   "/product/filter/:type/:orderBy",
   productController.getProductByFilter
 );

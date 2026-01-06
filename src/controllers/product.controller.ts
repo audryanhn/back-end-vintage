@@ -113,15 +113,28 @@ export default {
   async getProductByFilter(req: Request, res: Response) {
     /**
      #swagger.tags = ['Product']
+
+     #swagger.requestBody = {
+        required : true,
+        content : {
+          "application/json" : {
+              schema : {$ref : "#/components/schemas/PriceFilter"}
+          }
+        }
+     }
+     
      */
     const { type, orderBy } = req.params;
     const { lowest, highest } = req.body;
 
+    const minPrice = Number(lowest) || 0;
+    const maxPrice = Number(highest) || 0;
+
     let priceFilter: any = {};
-    if (highest > 0 || lowest > 0) {
+    if (maxPrice > 0 || minPrice > 0) {
       priceFilter.price = {};
-      if (lowest > 0) priceFilter.price.$gte = lowest;
-      if (highest > 0) priceFilter.price.$lte = highest;
+      if (minPrice > 0) priceFilter.price.$gte = minPrice;
+      if (maxPrice > 0) priceFilter.price.$lte = maxPrice;
     }
 
     try {
@@ -130,7 +143,7 @@ export default {
           .find()
           .sort({ like: orderBy === "ascending" ? 1 : -1 })
           .limit(6);
-        response.success(res, "Filter By Like - Descending", result);
+        response.success(res, `Filter By Like - ${orderBy}`, result);
         return;
       }
 

@@ -65,6 +65,10 @@ const doc = {
       ActionHandler: {
         action: "decrease", // or "increase"
       },
+      PriceFilter: {
+        lowest: 0,
+        highest: 0,
+      },
     },
   },
 };

@@ -130,41 +130,54 @@ export default {
     const minPrice = Number(lowest) || 0;
     const maxPrice = Number(highest) || 0;
 
-    let priceFilter: any = {};
-    if (maxPrice > 0 || minPrice > 0) {
-      priceFilter.price = {};
-      if (minPrice > 0) priceFilter.price.$gte = minPrice;
-      if (maxPrice > 0) priceFilter.price.$lte = maxPrice;
-    }
-
     try {
+      const page = Math.max(1, Number(req.query.page) || 1);
+      let limit = Math.max(1, Number(req.query.limit) || 10);
+
+      if (limit > 100) limit = 100;
+
+      const skip = (page - 1) * limit;
+
+      let priceFilter: any = {};
+      if (maxPrice > 0 || minPrice > 0) {
+        priceFilter.price = {};
+        if (minPrice > 0) priceFilter.price.$gte = minPrice;
+        if (maxPrice > 0) priceFilter.price.$lte = maxPrice;
+      }
+
+      let sortCriteria: any = {};
+
       if (type === "like") {
-        const result = await productModel
-          .find()
-          .sort({ like: orderBy === "ascending" ? 1 : -1 })
-          .limit(6);
-        response.success(res, `Filter By Like - ${orderBy}`, result);
-        return;
+        sortCriteria = { like: orderBy === "ascending" ? 1 : -1 };
+      } else if (type === "date") {
+        sortCriteria = { createdAt: orderBy === "ascending" ? 1 : -1 };
+      } else {
+        sortCriteria = { _id: -1 };
       }
 
-      if (type === "price") {
-        const result = await productModel
+      const [result, totalCount] = await Promise.all([
+        productModel
           .find(priceFilter)
-          .sort({ price: orderBy === "ascending" ? 1 : -1 })
-          .limit(6);
+          .sort(sortCriteria)
+          .skip(skip)
+          .limit(limit),
 
-        response.success(res, `Success sorting price - ${orderBy}`, result);
-        return;
-      }
+        productModel.countDocuments(priceFilter),
+      ]);
 
-      if (type === "date") {
-        const result = await productModel
-          .find()
-          .sort({ createdAt: orderBy === "ascending" ? 1 : -1 })
-          .limit(6);
-        response.success(res, `Success sorting date - ${orderBy}`, result);
-        return;
-      }
+      res.status(200).json({
+        meta: {
+          status: "200 - success",
+          message: `Success Sorting ${type} - ${orderBy}`,
+          total_items: totalCount,
+          total_pages: Math.ceil(totalCount / limit),
+          current_page: page,
+          limit,
+          has_next_page: page * limit < totalCount,
+          has_previous_page: page > 1,
+        },
+        data: result,
+      });
     } catch (error) {
       const err = error as unknown as Error;
       response.badRequest(

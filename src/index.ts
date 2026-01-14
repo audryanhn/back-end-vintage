@@ -87,7 +87,7 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
     console.log("DB Connection error : ", error);
     return res.status(500).json({
       status: "500 - Internal Server Error",
-      error: "db Connection failed",
+      error,
     });
   }
 });
